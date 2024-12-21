@@ -1,0 +1,56 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.swp
+*.swo
+*.bak
+*.log
+
+# Virtual Environments
+venv/
+env/
+ENV/
+.virtualenv/
+honodicenv
+
+# Django specific
+*.sqlite3
+db.sqlite3
+/media/
+/staticfiles/
+/*.log
+*.pot
+*.py[co]
+
+# Django migrations
+*/migrations/*
+!*/migrations/__init__.py
+
+# Secrets
+.env
+*.key
+
+# Byte-compiled files
+*.pyc
+
+# Caches
+*.cache
+*.mo
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Testing
+.coverage
+.tox
+.pytest_cache/
+htmlcov/

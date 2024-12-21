@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Honodic - Home
+{% endblock %}
+
+{% block stylesheets %}
+    <link href="{% static 'products/css/products.css' %}" rel="stylesheet"></link>
+
+    <style>
+        .product__hero {
+            height: 350px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)),
+                    url({% static 'products/images/products_hero_image.jpg' %}) no-repeat center/cover;"
+        }
+
+        .search__field {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            width: 100%;
+        }
+
+        .search__btn {
+            background-color: #13E26A;
+            color: black;
+            border-radius: 30px;
+            width: 20%;
+        }
+
+        .search_box_container {
+            border: 1px solid white;
+            border-radius: 30px;
+            background-color: white;
+            width: 40%;
+            height: 40px;
+            padding: 0px 0px 0px 20px;
+        }
+
+        @media only screen and (max-width: 991px) {
+            .search_box_container {
+                border: 1px solid white;
+                border-radius: 30px;
+                background-color: white;
+                width: 97%;
+                height: 40px;
+                padding: 0px 0px 0px 20px;
+            }
+        }
+    </style>
+{% endblock %}
+
+
+
+{% block content %}
+    {% include 'navbars/default_navbar.html' %}
+
+    {% comment %} hero section {% endcomment %}
+    <section class="product__hero py-5 justify-content-center align-content-center">
+        <div class="container py-4">
+            <h1 class="text-center text-white">All Products</h1>
+            {% comment %} search bar {% endcomment %}
+            <div class="d-flex search_box_container justify-content-between m-auto">
+                <input class="search__field" type="search" name="search" id="search" placeholder="Search">
+                <button class="search__btn" type="submit">Search</button>
+            </div>
+        </div>
+    </section>
+
+    {% comment %} categories {% endcomment %}
+    <section class="py-5">
+        <div class="container mx-auto">
+            <div class="row">
+                <div class="col-lg-2">
+                    <h3>All Catehories</h3>
+                    <ul class="rounded-2 p-2">
+                        <li>
+                            <a class="py-0 my-0" href="{% url 'products:products_view' %}">All products</a>
+                        </li>
+                        {% for category in categories %}
+                            <li>
+                                <a class="py-0 my-0" href="{% url 'products:products_view' %}?category_id={{category.id}}">{{category.title}}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-lg-10">
+                    <div class="row">
+                        {% for product in products %}
+                            <div class="col-lg-3 col-md-4 col-12">
+                                <div class="card shadow-sm featured_product_card" >
+                                   
+                                    <img width="400px" height="400px" src="{{product.image.url}}" class="card-img-top" alt="Delicious Food">
+                            
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">{{product.title}}</h5>
+                                        <p class="card-text text-muted">{{product.desc|slice:":60"}}..</p>
+                                        <div class="row">
+                                          
+                                            <div class="col-12">
+                                                <a href="{% url 'products:product_view' product.id %}" class="btn btn-outline-success btn-sm w-100">View Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+

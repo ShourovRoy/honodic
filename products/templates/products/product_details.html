@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Honodic - Home
+{% endblock %}
+
+{% block stylesheets %}
+  
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+    {% include 'navbars/default_navbar.html' %}
+
+    <section class="py-5">
+        <div class="container mx-auto py-3">
+           <div class="row">
+                <div class="col-md-6 col-12">
+                    <img src="{{product_details.image.url}}" alt="{{product_details.title}}" width="490px" height="400px" class="rounded-1" >
+                </div>
+
+                <div class="col-md-6 col-12">
+                    {% if product_details.is_featured %}
+                        <div class="py-1 px-2 rounded-2 border border-2 align-content-center border-success">
+                            <h5>Featured product</h5>
+                        </div>
+                    {% endif %}
+
+                    <h2>{{product_details.title}}</h2>
+                    <h3>Price: {{product_details.price}}</h3>
+                    <p>
+                        {{product_details.short_desc}}
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="py-4">
+                <p>
+                    {{product_details.desc}}
+                </p>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
