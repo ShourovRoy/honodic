@@ -80,14 +80,27 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# postgresql db
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "honodic_db",
+#         "USER": "",
+#         "PASSWORD": "",
+#         "HOST": "127.0.0.1",
+#         "PORT": "5432",
+#     }
+# }
+
+# mysql
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "honodic_db",
-        "USER": "",
-        "PASSWORD": "",
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "daaqzinc_honodic_app_db",
+        "USER": "daaqzinc_honodic_user",
+        "PASSWORD": "Honodic&007",
         "HOST": "127.0.0.1",
-        "PORT": "5432",
+        "PORT": "3306",
     }
 }
 
@@ -127,13 +140,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'staticfiles')
+# ]
+
+
+STATIC_ROOT = "/home/daaqzinc/public_html/static/"
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'staticfiles')
+    "/home/daaqzinc/public_html/static_dir/"
 ]
 
 MEDIA_ROOT = 'media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = '/home/daaqzinc/public_html/media/'
 
 
 # Default primary key field type
