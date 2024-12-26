@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-a-b-k6l3ko(14t%jkc!yk@@d7wvs_qd1hh#z)n@yy$6huxur%x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*", "localhost", '127.0.0.1', '15.207.249.162']
 
@@ -81,28 +81,28 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 # postgresql db
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "honodic_db",
-#         "USER": "",
-#         "PASSWORD": "",
-#         "HOST": "127.0.0.1",
-#         "PORT": "5432",
-#     }
-# }
-
-# mysql
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "daaqzinc_honodic_app_db",
-        "USER": "daaqzinc_honodic_user",
-        "PASSWORD": "Honodic&007",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "honodic_db",
+        "USER": "",
+        "PASSWORD": "",
         "HOST": "127.0.0.1",
-        "PORT": "3306",
+        "PORT": "5432",
     }
 }
+
+# mysql
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "daaqzinc_honodic_app_db",
+#         "USER": "daaqzinc_honodic_user",
+#         "PASSWORD": "Honodic&007",
+#         "HOST": "127.0.0.1",
+#         "PORT": "3306",
+#     }
+# }
 
 
 # Password validation
@@ -140,20 +140,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'staticfiles')
-# ]
-
-
-STATIC_ROOT = "/home/daaqzinc/public_html/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATICFILES_DIRS = [
-    "/home/daaqzinc/public_html/static_dir/"
+    os.path.join(BASE_DIR, 'staticfiles')
 ]
 
-MEDIA_ROOT = 'media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-MEDIA_ROOT = '/home/daaqzinc/public_html/media/'
+
+# STATIC_ROOT = "/home/daaqzinc/public_html/static/"
+# STATICFILES_DIRS = [
+#     "/home/daaqzinc/public_html/static_dir/"
+# ]
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+# MEDIA_ROOT = '/home/daaqzinc/public_html/media/'
 
 
 # Default primary key field type

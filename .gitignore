@@ -23,6 +23,7 @@ db.sqlite3
 /*.log
 *.pot
 *.py[co]
+/static/
 
 # Django migrations
 */migrations/*
