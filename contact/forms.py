@@ -7,3 +7,4 @@ class ContactForm(forms.Form):
     email = forms.EmailField(max_length=200, label="Email")
     subject = forms.CharField(max_length=250, label="Subject")
     message = forms.CharField(widget=forms.Textarea, label="Message")
+

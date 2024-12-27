@@ -1,35 +1,38 @@
 from django.shortcuts import render
 from .models import Product, Category
 from django.shortcuts import get_object_or_404
+from django.views.generic import ListView, DetailView
 # Create your views here.
 
-def ProductsView(request):
+class ProductsView(ListView):
+    template_name = "products/products.html"
+    ordering = ['updated_at']
+    model = Product
+    context_object_name = "products"
 
-    products = Product.objects.all().order_by("updated_at")
-    categories = Category.objects.all().order_by("updated_at")
+    def get_queryset(self):
 
-    category_id = request.GET.get("category_id")
+        qs = super().get_queryset()
+        category_id = self.request.GET.get("category_id")
 
-    if category_id:
-        category_obj = get_object_or_404(Category, pk=category_id)
-        products = category_obj.products.all()
+        if category_id:
+            category = get_object_or_404(Category, pk=int(category_id))
+            qs = category.products.all().order_by("created_at")
+        
+        return qs
 
-    context = {
-        "products": products,
-        "categories": categories
-    }
-
-    return render(request, 'products/products.html', context)
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = Category.objects.all().order_by("updated_at")
+        return context
 
 # product details view
-def product_view(request, product_id):
+class ProductView(DetailView):
+    template_name = "products/product_details.html"
+    model = Product
+    context_object_name = "product_details"
 
-    product_details = get_object_or_404(Product, pk=product_id)
 
-
-    context = {
-        "product_details": product_details 
-    }
-
-    return render(request, "products/product_details.html", context)
+    def get_object(self, queryset = None):
+        product_id = self.kwargs['product_id']
+        return get_object_or_404(self.model, pk=product_id)

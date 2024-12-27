@@ -1,32 +1,19 @@
-from django.shortcuts import render
 from .models import Slider, AboutDetail, UniqueFeature, FeaturedProductDetail
 from products.models import Product
-from django.core.exceptions import ObjectDoesNotExist
+from django.views.generic.base import TemplateView
 # Create your views here.
 
-def home_view(request):
 
-    sliders = Slider.objects.all().order_by("-updated_at")[:3]
-    try:
-        about_information = AboutDetail.objects.get()
-    except ObjectDoesNotExist:
-        about_information = None
-    unique_features = UniqueFeature.objects.all().order_by("-updated_at")[:4]
-    featured_product_list = Product.objects.filter(is_featured=True).order_by("updated_at")[:3]
+class HomeView(TemplateView):
+    template_name = "home/home.html"
 
-    try:
-        featured_product_details = FeaturedProductDetail.objects.get()
-    except ObjectDoesNotExist:
-        featured_product_details = None
-    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
 
+        context['sliders'] = Slider.objects.all().order_by("-updated_at")[:3]
+        context['about_information'] = AboutDetail.objects.first()
+        context['unique_features'] = UniqueFeature.objects.all().order_by("-updated_at")[:4]
+        context['featured_product_list'] = Product.objects.filter(is_featured=True).order_by("updated_at")[:3]
+        context['featured_product_details'] = FeaturedProductDetail.objects.first()
 
-    context = {
-        "sliders": sliders,
-        "about_information": about_information, 
-        "unique_features": unique_features,
-        "featured_product_list": featured_product_list,
-        "featured_product_details": featured_product_details,
-    }
-    
-    return render(request, 'home/home.html', context)
+        return context

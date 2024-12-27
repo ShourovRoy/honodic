@@ -1,17 +1,16 @@
 from django.shortcuts import render
 from .models import SectionOneContent, SectionTwoContent, FrequentlyAskedQuention
+from django.views.generic.base import TemplateView 
+
 # Create your views here.
-def about_view(request):
+class AboutView(TemplateView):
+    template_name = "about/about.html"
 
-    section_one_details = SectionOneContent.objects.all().order_by("updated_at").first()
-    section_two_details = SectionTwoContent.objects.all().order_by("updated_at").first()
-    faq_list = FrequentlyAskedQuention.objects.all().order_by("updated_at")[:7]
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
 
+        context['section_one_details'] = SectionOneContent.objects.all().order_by("updated_at").first()
+        context['section_two_details'] = SectionTwoContent.objects.all().order_by("updated_at").first()
+        context['faq_list'] = FrequentlyAskedQuention.objects.all().order_by("updated_at")[:7]
 
-    conext = {
-        "section_one_details": section_one_details,
-        "section_two_details": section_two_details,
-        "faq_list": faq_list,
-    }
-
-    return render(request, "about/about.html", conext)
+        return context; 
