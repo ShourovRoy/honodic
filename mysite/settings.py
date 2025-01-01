@@ -92,18 +92,27 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 #         "PORT": "5432",
 #     }
 # }
-
-# mysql
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "daaqzinc_honodic_app_db",
-        "USER": "daaqzinc_honodic_user",
-        "PASSWORD": "Honodic&007",
-        "HOST": "127.0.0.1",
-        "PORT": "3306",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "honodic_db",
+        "USER": "honodic_db_owner",
+        "PASSWORD": "Pv2SpUOkdwy7",
+        "HOST": "ep-orange-snowflake-a5xckgye.us-east-2.aws.neon.tech",
+        "PORT": "5432",
     }
 }
+# mysql
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "daaqzinc_honodic_app_db",
+#         "USER": "daaqzinc_honodic_user",
+#         "PASSWORD": "Honodic&007",
+#         "HOST": "127.0.0.1",
+#         "PORT": "3306",
+#     }
+# }
 
 
 # Password validation
