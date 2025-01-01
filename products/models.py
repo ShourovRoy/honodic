@@ -12,10 +12,10 @@ class Product(models.Model):
         blank=True, 
         help_text="Enter a brief description of the product (max 400 characters)."
     )
-    desc = models.TextField(
-        max_length=2000, 
-        help_text="Enter a detailed description of the product (max 2000 characters)."
-    )
+    # desc = models.TextField(
+    #     max_length=2000, 
+    #     help_text="Enter a detailed description of the product (max 2000 characters)."
+    # )
     image = models.ImageField(
         upload_to="products/", 
         blank=True, 

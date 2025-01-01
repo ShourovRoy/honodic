@@ -155,7 +155,7 @@
                     <img width="400px" height="400px" src="{{product.image.url}}" class="card-img-top" alt="Delicious Food">
                     <div class="card-body text-center">
                         <h5 class="card-title">{{product.title}}</h5>
-                        <p class="card-text text-muted">{{product.desc|slice:":60"}}..</p>
+                        <p class="card-text text-muted">{{product.short_desc|slice:":60"}}..</p>
                         <a href="{% url 'products:product_view' product.id %}" class="btn btn-outline-success btn-md w-100">View now</a>
                     </div>
                   </div>
