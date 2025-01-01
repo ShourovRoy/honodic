@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Slider, AboutDetail, UniqueFeature, FeaturedProductDetail
+from .models import Slider, AboutDetail, UniqueFeature, FeaturedProductDetail, Statement, FooterTitle
 # Register your models here.
 
 
@@ -18,3 +18,15 @@ admin.site.register(UniqueFeature, UniqueFeatureAdmin)
 
 
 admin.site.register(FeaturedProductDetail)
+
+
+class StatementAdmin(admin.ModelAdmin):
+    list_display = ['title']
+
+admin.site.register(Statement)
+
+
+class FooterTitleAdmin(admin.ModelAdmin):
+    list_display = ['title']
+
+admin.site.register(FooterTitle, FooterTitleAdmin)

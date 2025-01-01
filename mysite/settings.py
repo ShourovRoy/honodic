@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-a-b-k6l3ko(14t%jkc!yk@@d7wvs_qd1hh#z)n@yy$6huxur%x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*", "localhost", '127.0.0.1', '15.207.249.162']
+ALLOWED_HOSTS = ["*", "localhost", '127.0.0.1', '15.207.249.162', 'honodic.com', 'http://honodic.com', ]
 
 
 # Application definition
@@ -69,6 +69,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'contact.processor.contact_details',
+                'home.processor.FooterTitleProcessor',
             ],
         },
     },

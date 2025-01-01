@@ -22,7 +22,7 @@ class Product(models.Model):
         null=True, 
         help_text="Upload a product image. Recommended size: 800x800px."
     )
-    price = models.FloatField(default=0.0, help_text="Enter product price.")
+    # price = models.FloatField(default=0.0, help_text="Enter product price.")
     categories = models.ManyToManyField(
         Category, 
         related_name="products", 

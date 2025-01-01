@@ -96,7 +96,7 @@
 
 
     {% comment %} unique features {% endcomment %}
-    <div class="py-5 bg-dark-subtle">
+    {% comment %} <div class="py-5 bg-dark-subtle">
       <div class="container mx-auto">
         <h2 class="text-center py-3">WHAT MAKES US UNIQUE?</h2>
   
@@ -118,10 +118,24 @@
   
   
       </div>
-    </div> 
+    </div>  {% endcomment %}
 
 
+    {% comment %} statement {% endcomment %}
+    <div class="py-5 bg-dark-subtle">
+      {% if statement %}
+      <div class="container text-center">
+        <h2>{{statement.title}}</h2>
+        <p class="w-75 mx-auto">{{statement.desc}}</p>
+      </div>
+      {% else %}
 
+      <div class="container text-center">
+        <h2>Test Statement Title</h2>
+        <p class="w-75 mx-auto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, molestiae. Reprehenderit veritatis tenetur aspernatur. Iusto ipsam molestiae ipsum eius asperiores inventore aut, magnam excepturi autem veniam maiores quia incidunt velit?</p>
+      </div>
+      {% endif %}
+    </div>
 
   {% comment %} featured products {% endcomment %}
   <div class="py-5">

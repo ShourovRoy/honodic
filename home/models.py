@@ -101,6 +101,25 @@ class UniqueFeature(models.Model):
         return self.title
 
 
+
+# Statement
+class Statement(models.Model):
+    title = models.CharField(
+        max_length=100, 
+        default="", 
+        help_text="Enter the title for the statement section."
+    )
+    desc = models.TextField(
+        max_length=2000, 
+        default="", 
+        help_text="Provide a brief description for the statement section (max 300 characters)."
+    )
+
+
+    def __str__(self):
+        return self.title
+
+
 # featured product details model
 class FeaturedProductDetail(models.Model):
     title = models.CharField(
@@ -112,6 +131,18 @@ class FeaturedProductDetail(models.Model):
         max_length=500, 
         default="", 
         help_text="Provide a brief description of the featured product (up to 500 characters)."
+    )
+
+    def __str__(self):
+        return self.title
+
+
+# title
+class FooterTitle(models.Model):
+    title = models.CharField(
+        max_length=500, 
+        default="", 
+        help_text="Enter the title for the footer section in 500 length."
     )
 
     def __str__(self):
